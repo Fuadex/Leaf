@@ -17,16 +17,13 @@
 #include <NewPing.h>
 #include "FastLED.h"
 
-#define NUM_LEDS 60
+#define PIRPIN 7
 #define DATA_PIN 8
-
 #define TRIGGER_PIN  12
 #define ECHO_PIN  13
-#define LED_PIN 9 //Blue LED
-#define LED_PIN2 10 //Green LED
-#define LED_PIN3 11 //Blue LED
+
+#define NUM_LEDS 60
 #define MAX_DISTANCE 240 //It was 300 but the most it picked up was 255, but to make it more nicely dividable, I made it max 240
-#define PIRPIN 7
 
 Average <int>sonic(20); //That makes an aggregate based on 20 sensor readings
 //SoftwareSerial mySerial(0, 1); // RX, TX
