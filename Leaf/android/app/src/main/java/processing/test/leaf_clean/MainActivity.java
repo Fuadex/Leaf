@@ -1,4 +1,4 @@
-package processing.test.question_;
+package processing.test.leaf_clean;
 
 import android.os.Bundle;
 import android.content.Intent;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(frame, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 
                                                      ViewGroup.LayoutParams.MATCH_PARENT));
     
-    sketch = new Question_();
+    sketch = new Leaf_clean();
     
     PFragment fragment = new PFragment(sketch);
     fragment.setView(frame, this);

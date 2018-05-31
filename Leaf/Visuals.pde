@@ -1,6 +1,6 @@
 PFont[] font;
 
-String[] img = {"back.png", "leaf.png", "lightoff.png", "lighton.png", "next.png", "nosound.png", "yessound.png", "Lamp 2.png", "Lamp 3.png", "Lamp 4.png", "Lamp 5.png", "Lamp 6.png", "Lamp 7.png", "Lamp 8.png"};
+String[] img = {"back.png", "leaf2.png", "lightoff.png", "lighton.png", "next.png", "nosound.png", "yessound.png", "Lamp 2.png", "Lamp 3.png", "Lamp 4.png", "Lamp 5.png", "Lamp 6.png", "Lamp 7.png", "Lamp 8.png"};
 PImage[] images = new PImage[img.length];
 
 String[] names = {"Light Gentle Rain", "Forest", "Gentle Creek"};
@@ -8,6 +8,7 @@ byte checkmate;
 
 boolean used = false;
 boolean on = true;
+boolean trigger = false;
 int lastX = mouseX;
 int lastY = mouseY;
 
@@ -29,12 +30,14 @@ void part1() {
   stroke(#262626);
   strokeWeight(width/100);
   line(0, height/2, width, height/2);
-  imageMode(CORNERS);
-  image(images[0], width*2/12, height*8.6/38);
-  image(images[4], width*9.5/12, height*8.6/38);
-  //println(song);
   imageMode(CENTER);
-  if (mousePressed && mouseX > width*2/12 && mouseX < width*10/12 && mouseY > height*3/11 && mouseY < height*5/11) {
+  tint(255);
+  //imageMode(CORNERS);
+  //println(song);
+
+  strokeWeight(0);
+  
+    if (mousePressed && mouseX > width*3.5/12 && mouseX < width*8.5/12 && mouseY > height*2/12 && mouseY < height*4.5/12) {
     on = !on;
 
     if (on==false) {
@@ -45,46 +48,44 @@ void part1() {
       //music.play();
       songshuffle2();
     }
-    delay(400);
+    delay(300);
   }
-
-  if (on==false) {
-    image(images[5], width/2, height*2/12); //sound off icon
-    //fill(#262626);
-    rect(width*2/12, height*4.075/11, width*8/12, height*0.8/11, width); //button sound
-    fill(255);
-    text("SOUND ON", width/2, height*5/12);
-  } else if (on==true) {
-    image(images[6], width/2, height*2/12); //sound off icon
-    fill(#7ED321);
-    rect(width*2/12, height*4.075/11, width*8/12, height*0.8/11, width); //button sound
-    fill(255);
-    text("SOUND OFF", width/2, height*5/12);
-  }
-
-  strokeWeight(0);
   //
-  if (mousePressed && mouseX>width*9/12 && mouseX<width*11/12 && mouseY>height*8/38 && mouseY<height*15/38) {
-    //   fill(#5A5A5A);
-    //textAlign(CENTER);
-    //textSize(width/20);
-    //text("WTF", width/2, height*3/12);
+  else if (mousePressed && mouseX>width*9/12 && mouseX<width*11.5/12 && mouseY>height*3/12 && mouseY<height*5/12) {
     if (on==true) {
       songshuffle();
     }
-  } else if (mousePressed && mouseX>width*1/12 && mouseX<width*3/12 && mouseY>height*8/38 && mouseY<height*15/38) {
-    //   fill(#5A5A5A);
-    //textAlign(CENTER);
-    //textSize(width/20);
-    //text("WTF", width/2, height*3/12);
+  } else if (mousePressed && mouseX>width*0.5/12 && mouseX<width*3/12 && mouseY>height*3/12 && mouseY<height*5/12) {
     if (on==true) {
       songshuffle1();
     }
   }
+  
+  if (on==false){
+    tint(100);
+  }
+  image(images[0], width*2/12, height*4/12, width/15, width/15);
+  image(images[4], width*10/12, height*4/12, width/15, width/15);
+  tint(255);
+  
+    if (on==false) {
+    image(images[5], width/2, height*2.5/12, width/15, width/15); //sound off icon
+  //  //fill(#262626);
+  //  rect(width*2/12, height*4.075/11, width*8/12, height*0.8/11, width); //button sound
+  //  fill(255);
+  //  text("SOUND ON", width/2, height*5/12);
+  } else if (on==true) {
+    image(images[6], width/2, height*2.5/12, width/15, width/15); //sound off icon
+  //  fill(#7ED321);
+  //  rect(width*2/12, height*4.075/11, width*8/12, height*0.8/11, width); //button sound
+  //  fill(255);
+  //  text("SOUND OFF", width/2, height*5/12);
+  }
+  
   kolor();
   textAlign(CENTER);
   textSize(width/20);
-  text(names[song], width/2, height*3/12);
+  text(names[song], width/2, height*4.1/12);
 }
 
 void part2() {
@@ -99,11 +100,26 @@ void part2() {
   line(width*1/10, height*7/10, width*9/10, height*7/10);
   strokeWeight(0);
 
-  if (mousePressed && mouseX > width/20 && mouseX < width*19/20 && mouseY > height*6/10 && mouseY < height*8/10) {
+      if (mousePressed && mouseX>width*5/12 && mouseX < width*7/12 && mouseY > height*6.5/12 && mouseY < height*7.5/12){
+        if (lastX==0){
+    trigger = !trigger;
+        }
+    if (trigger==true){
+      used=true;
+      trigger=false;
+lastX=width;
+    }
+    else if(trigger==false){
+lastX=0;
+  }
+      delay(300);
+      }
+
+  if (mousePressed && mouseX > width/20 && mouseX < width*19/20 && mouseY > height*6.5/10 && mouseY < height*7.8/10) {
     //image(images[1], pmouseX, height*7/10); //leaf
     used = true;
-    lastX=pmouseX;
-    lastY=pmouseY;
+    lastX=mouseX;
+    lastY=mouseY;
   }
   if (used == false) {
     image(images[1], width/12, height*7/10); //leaf
@@ -127,7 +143,8 @@ void part2() {
 
   if (slider==0) {
     image(images[2], width/2, height*6/10); //light bulb
-  } else if (slider!=0) {
+  } 
+  else if (slider!=0) {
     float mappedslider = map(slider, 0, 100, 100, 255); //mapping slider to match rgb values
     //println(mappedslider);
     //tint(100, 255, mappedslider);

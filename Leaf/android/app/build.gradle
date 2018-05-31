@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "processing.test.question_"
+        applicationId "processing.test.leaf_clean"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1

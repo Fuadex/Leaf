@@ -15,7 +15,7 @@ int someonedetected() {
 
     break_status = 1;
 
-  }  else if (pir) {
+  }  else if (pirsensor) {
     break_status = 1;
   }
   else if (rangeInCentimeters > 20 || rangeInCentimeters < 250) {
@@ -44,7 +44,7 @@ void glow1 () {
     else if (rangeInCentimeters > 20 && rangeInCentimeters < 250) {
       glow3();
     }
-    else if (pir) {
+    else if (pirsensor) {
       glow2();
     }
     else {
@@ -67,7 +67,7 @@ void glow1 () {
     else if (rangeInCentimeters > 20 && rangeInCentimeters < 250) {
       glow3();
     }
-    else if (pir) {
+    else if (pirsensor) {
       glow2();
     }
     else {

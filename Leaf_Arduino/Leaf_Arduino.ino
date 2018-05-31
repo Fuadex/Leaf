@@ -56,11 +56,10 @@ void loop()
     someoneissitting();
   } else if (rangeInCentimeters > 20 && rangeInCentimeters < 250) { // anyone within 2m,
     glow3();
-  }  else if (pirsensor == true) { // anyone withing 3 to 7m
+  }  else if (pirsensor) { // anyone withing 3 to 7m
     glow2();
   } else {
     glow1();
   }
-
 }
 

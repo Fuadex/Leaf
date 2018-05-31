@@ -25,13 +25,13 @@ void ultrasonic() {
   //Here in order to optimize the code, we made an array of values
   //And looped through them appropriately delay by 1ms and stored safely
 
-int d[8];
-int uS[8];
+int d[9];
+int uS[9];
       
-    for (int i=1; i<=8; i++){
+    for (int i=0; i<9; i++){
       uS[i] = sonar.ping();
       d[i] = (uS[i] / US_ROUNDTRIP_CM);
-      delay(1);
+      delay(2);
     }
 
   //Here we subtracted the values. If 8 different readings had similar values, then a random reading was included in rangeInCentimeters
@@ -45,6 +45,9 @@ int uS[8];
   else if (((d[8] - d[7]) - (d[6] - d[5])) - ((d[4] - d[3]) - (d[2] - d[1])) < -5 || ((d[8] - d[7]) - (d[6] - d[5])) - ((d[4] - d[3]) - (d[2] - d[1])) > 5) {
     rangeInCentimeters = 0;
   }
+
+Serial.println(rangeInCentimeters);
+  
 }
 
 //This is the motion sensor
@@ -53,4 +56,5 @@ int uS[8];
 
 void pir() {
   pirsensor = digitalRead(PIRPIN);
+  Serial.println(pirsensor);
 }
